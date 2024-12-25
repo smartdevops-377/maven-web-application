@@ -21,11 +21,18 @@ pipeline {
                         echo 'Running test-1'
                     }
                 }
+stage('test-2') {
+                    steps {
+                        echo 'Running test-2'
+                    }
+                }
+            }
+        }
 
-                stage('test-2') {
-                  steps {
-                      echo "running test2"
-}
-}
-}
+        stage('Deploy') {
+            steps {
+                echo 'Deploying the stage'
+            }
+        }
+    }
 }
