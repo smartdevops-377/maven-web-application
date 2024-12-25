@@ -1,0 +1,30 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+ when {
+                branch 'main'
+            }
+            steps {
+                echo 'Building the stage'
+            }
+        }
+
+        stage('Run the tests in Parallel') {
+            when {
+                branch 'main'
+            }
+            parallel {      // parallely started
+                stage('test-1') {
+                    steps {
+                        echo 'Running test-1'
+                    }
+                }
+
+                stage('test-2') {
+                  steps {
+                      echo "running test2"
+}
+}
+}
