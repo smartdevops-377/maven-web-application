@@ -1,5 +1,5 @@
 <html>
  <body>
-  <h2>Hello World!, welcome to jenkins, demo of github-webhook with jenkins</h2>
+  <h2>Hello World!, welcome to tomcat deployment tools and war file concept</h2>
  </body>
 </html>
