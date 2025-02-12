@@ -1,5 +1,5 @@
 <html>
  <body>
-  <h2>Hello World!, welcome to tomcat deployment tools and war file concept</h2>
+  <h2>Hello World!, welcome to jnekins declartive pipeline</h2>
  </body>
 </html>
