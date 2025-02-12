@@ -4,6 +4,9 @@ agent any
 triggers {
   pollSCM '* * * * *'
 }
+options {
+  buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '2')
+}
 
 stages
 {
