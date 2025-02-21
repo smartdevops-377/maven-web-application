@@ -1,0 +1,54 @@
+pipeline
+{
+agent any
+tools {
+  maven 'mvn3.9.9'
+}
+
+triggers {
+  pollSCM '* * * * *'
+}
+options {
+  buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '2')
+}
+
+stages
+{
+stage('checkout')
+{
+steps
+{
+echo "checking out to git hub repo"
+}
+}
+stage('build')
+{
+steps
+{
+echo " building the application"
+}
+}
+stage ('sonar')
+{
+steps
+{
+echo "checking the code quality"
+}
+}
+stage('publish artifacts')
+{
+steps
+{
+echo "pushish the artifacts on to nexus/jfrog/ecr/gcr/azure registry/docker registry"
+}
+}
+stage('deployment')
+{
+steps
+{
+echo " deploying to tomcat server"
+}
+}
+}
+}
+

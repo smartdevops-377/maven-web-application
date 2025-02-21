@@ -1,7 +1,16 @@
 pipeline {
     agent any
-
+parameters {
+  choice choices: ['main', 'dev', 'qa', 'test'], description: 'all the current branches', name: 'BranchNamegit'
+}
     stages {
+stage('checkout')
+{
+steps
+{
+git branch:"${params.BranchNamegit}" , credentialsId: '68c7fce3-6cdc-4c1f-a388-8c4f9be779d8', url: 'https://github.com/smartdevops-377/maven-web-application.git'
+}
+}
         stage('Build') {
  when {
                 branch 'main'
@@ -21,10 +30,18 @@ pipeline {
                         echo 'Running test-1'
                     }
                 }
+stage('test-2') {
+                    steps {
+                        echo 'Running test-2'
+                    }
+                }
+            }
+        }
 
-                stage('test-2') {
-                  steps {
-                      echo "running test2"
-}
-}
+        stage('Deploy') {
+            steps {
+                echo 'Deploying the stage'
+            }
+        }
+    }
 }

@@ -25,5 +25,10 @@ stage ("deploy to the container")
     //deploy adapters: [tomcat9(credentialsId: '1d974d15-9756-4c6f-b106-b09758995292', path: '', url: 'http://13.201.191.45:8081')], contextPath: '/', war: '**/*.war'
     echo "deployed succesfully"
 }
+stage ("final output")
+       {
+           echo " demo of multibranch pipeline"
+       }
+       
 }
 
