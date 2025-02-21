@@ -1,6 +1,8 @@
 pipeline {
     agent any
-
+parameters {
+  choice choices: ['main', 'dev', 'qa', 'test'], description: 'all the current branches', name: 'BranchNamegit'
+}
     stages {
         stage('Build') {
  when {
