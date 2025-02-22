@@ -1,5 +1,5 @@
 pipeline {
-    agent {slave}
+    agent label
 parameters {
   choice choices: ['main', 'dev', 'qa', 'test'], description: 'all the current branches', name: 'BranchNamegit'
 }
