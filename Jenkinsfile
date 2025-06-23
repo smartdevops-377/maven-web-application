@@ -27,7 +27,7 @@ stage ("deploy to the container")
 }
 stage ("final output")
        {
-           echo " demo of multibranch pipeline"
+           echo " demo of multibranch pipeline for gcp batch"
        }
        
 }
