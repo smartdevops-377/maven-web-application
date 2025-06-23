@@ -35,24 +35,25 @@ pipeline {
         }
 
         stage('Upload to Nexus') {
-            steps {
-                nexusArtifactUploader(
-                    nexusVersion: 'nexus3',
-                    protocol: 'http',
-                    nexusUrl: '34.172.99.7:8081',
-                    groupId: 'com.javacodegeeks',
-                    version: '1.0-SNAPSHOT',
-                    repository: 'maven-releases',
-                    credentialsId: 'nexus-creds-id',
-                    artifacts: [
-                        [artifactId: 'maven-web-app',
-                         classifier: '',
-                         file: "${env.WAR_FILE}",
-                         type: 'war']
-                    ]
-                )
-            }
-        }
+    steps {
+        nexusArtifactUploader(
+            nexusVersion: 'nexus3',
+            protocol: 'http',
+            nexusUrl: '34.172.99.7:8081',             
+            groupId: 'com.javacodegeeks',
+            version: '1.0-SNAPSHOT',
+            repository: 'maven-snapshots',           
+            credentialsId: 'nexus-creds-id',
+            artifacts: [
+                [artifactId: 'maven-web-app',
+                 classifier: '',
+                 file: 'target/SampleWebApplication.war',
+                 type: 'war']
+            ]
+        )
+    }
+}
+
 
         stage('Deploy to Tomcat') {
             steps {
