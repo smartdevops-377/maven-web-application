@@ -1,0 +1,24 @@
+node {
+    def mavenHome= tool name: 'mvn 3.9.9', type: 'maven'
+    stage ('checkout')
+    {
+        checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'cd360bf4-dc90-4f87-9bb9-1a7aacb0406f', url: 'https://github.com/smartdevops-377/maven-web-application.git']])
+    }
+    stage ('build')
+    {
+        sh "${mavenHome}/bin/mvn clean package"
+    }
+    stage ('sonarqube analysis')
+    {
+           //sh "${mavenHome}/bin/mvn sonar:sonar"
+           echo "please perform the sonar analysis"
+          }
+    stage ('publish the war file to nexus') {
+            //sh "${mavenHome}/bin/mvn deploy"
+            echo " published the artifacts"
+    }
+    stage ( 'deploy')
+    {
+        deploy adapters: [tomcat9(alternativeDeploymentContext: '', credentialsId: 'e50ab329-e320-479b-be84-a0a403a30185', path: '', url: 'http://51.20.133.96:8080')], contextPath: '/maven-web-application', war: '**/*.war'
+    }
+}
