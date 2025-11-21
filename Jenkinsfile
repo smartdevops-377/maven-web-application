@@ -1,5 +1,5 @@
 node {
-    def mavenapp = tool name : "mvn3.9.9"
+   def mavenHome= tool name: 'mvn 3.9.9', type: 'maven'
   
     properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '2')), pipelineTriggers([cron('* * * * *')])])
     stage("checkout") {
@@ -8,7 +8,7 @@ node {
     
     stage('build') {
       
-    sh "${mavenapp}/bin/mvn clean package"
+    sh "${mavenHome}/bin/mvn clean package"
     // some block
 }
 /*stage ("sonarqube")
