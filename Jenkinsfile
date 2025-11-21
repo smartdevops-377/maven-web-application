@@ -1,5 +1,5 @@
 node {
-    def mavenapp = tool name : "mvn3.9"
+    def mavenapp = tool name : "mvn3.9.9"
   
     properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '2')), pipelineTriggers([cron('* * * * *')])])
     stage("checkout") {
